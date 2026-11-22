@@ -23,8 +23,9 @@ function lockPointerAndPlay() {
   isInMainMenu = false;
   isGamePaused = false;
 
+  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
   const gameCanvas = document.getElementById('game3d');
-  if (gameCanvas && gameCanvas.requestPointerLock) {
+  if (!isTouchDevice && gameCanvas && gameCanvas.requestPointerLock) {
     gameCanvas.requestPointerLock();
   }
 }
@@ -62,6 +63,9 @@ btnSoundMain.addEventListener('click', toggleSound);
 btnSoundPause.addEventListener('click', toggleSound);
 
 document.addEventListener('pointerlockchange', () => {
+  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  if (isTouchDevice) return;
+
   const gameCanvas = document.getElementById('game3d');
   if (document.pointerLockElement !== gameCanvas) {
     isGamePaused = true;

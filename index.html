@@ -2,7 +2,10 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0f172a">
   <title>Забегаловка — 3D Кухня</title>
+  <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,10 +23,8 @@
       </div>
 
       <div class="menu-help">
-        <div><b>W A S D</b> — ходить по кухне</div>
-        <div><b>Мышь</b> — смотреть по сторонам</div>
-        <div><b>E</b> — готовить / открыть компьютер</div>
-        <div><b>ESC</b> — пауза и меню</div>
+        <div><b>ПК:</b> W A S D + Мышь + E</div>
+        <div><b>Телефон:</b> Джойстик слева + Камера справа + Кнопка [E]</div>
       </div>
 
       <button class="menu-btn" id="btn-start-main">▶ НАЧАТЬ ИГРУ</button>
@@ -32,7 +33,7 @@
     </div>
   </div>
 
-  <!-- Меню паузы (открывается по ESC) -->
+  <!-- Меню паузы -->
   <div id="pause-overlay" style="display: none;">
     <div class="menu-box">
       <h1>⏸ ПАУЗА</h1>
@@ -71,7 +72,7 @@
   </div>
 
   <!-- Красное уведомление об ограблении на следующий день (10% шанс) -->
-  <div id="robbery-banner" style="display: none; position: fixed; top: 82px; left: 50%; transform: translateX(-50%); background: #dc2626; color: #ffffff; border: 3px solid #fef08a; padding: 14px 28px; border-radius: 16px; font-size: 22px; font-weight: 900; letter-spacing: 1px; z-index: 90; box-shadow: 0 10px 30px rgba(220, 38, 38, 0.85); pointer-events: none;">
+  <div id="robbery-banner" style="display: none; position: fixed; top: 82px; left: 50%; transform: translateX(-50%); background: #dc2626; color: #ffffff; border: 3px solid #fef08a; padding: 14px 28px; border-radius: 16px; font-size: 20px; font-weight: 900; letter-spacing: 1px; z-index: 90; box-shadow: 0 10px 30px rgba(220, 38, 38, 0.85); pointer-events: none; text-align: center;">
     🚨 ВАС ОБОКРАЛИ! Баланс кассы: 0 ₽
   </div>
 
@@ -111,6 +112,17 @@
     <div class="panel coins-box">
       💵 Касса: <span id="wallet-coins">0</span> ₽ <span id="profit-mult-badge" style="color:#facc15;"></span> &nbsp;|&nbsp; 🎯 План: <span id="day-coins">0</span>/<span id="day-goal">500</span> ₽
     </div>
+    <button id="btn-mobile-pause" title="Пауза">⏸</button>
+  </div>
+
+  <!-- Сенсорное управление для телефона (джойстик слева + кнопка действия справа) -->
+  <div id="mobile-controls">
+    <div id="joy-zone">
+      <div id="joy-base">
+        <div id="joy-stick"></div>
+      </div>
+    </div>
+    <button id="btn-mobile-action" type="button">✋ ДЕЙСТВИЕ [E]</button>
   </div>
 
   <!-- Прицел и подсказки -->
@@ -127,5 +139,10 @@
   <script src="computer.js"></script>
   <script src="save.js"></script>
   <script src="kitchen.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+  </script>
 </body>
 </html>

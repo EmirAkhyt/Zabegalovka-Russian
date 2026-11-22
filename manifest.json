@@ -1,0 +1,48 @@
+{
+  "id": "/index.html",
+  "name": "Забегаловка — 3D Кухня",
+  "short_name": "Забегаловка",
+  "description": "3D симулятор повара от первого лица: жарь сочные котлеты, собирай бургеры по заказам клиентов и развивай сеть закусочных!",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screen-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Приготовление 3D-бургеров на кухне Забегаловки"
+    },
+    {
+      "src": "screen-mobile.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Мобильная версия игры Забегаловка"
+    }
+  ]
+}
